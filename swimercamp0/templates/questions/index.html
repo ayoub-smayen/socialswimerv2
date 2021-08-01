@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load forum_extras %}
+{% block title %} Welcome {% endblock %}
+
+{% block content %}
+
+  <div class="row mt-4">
+    <div class="col-md-8">
+      {% for question in question_list %}
+        {% include 'questions/_question.html' %}
+      {% empty %}
+        <h4>No questions are submitted. You can add it by clicking <a href="{% url 'new_question' %}">here</a>!</h4>
+      {% endfor %}
+    </div>
+    <div class="col-md-4">
+      {% if not request.user.is_authenticated %}
+        <a href="{% url 'register' %}" class="btn btn-primary btn-block mb-2 btn-padding">
+          Create an Account
+        </a>
+      {% endif %}
+
+      {% include 'questions/_filters.html' %}
+
+      {% show_categories %}
+
+      <ul class="list-group mt-4 mb-4">
+        <li class="list-group-item d-flex justify-content-between align-items-center no-border">
+          <span class="upper bold">Statistics:</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center no-border">
+          <span>
+            <i class="fas fa-users"></i>
+            <span class="ml-1 bold">Total Members: {% total_members_count %}</span>
+          </span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center no-border">
+          <span>
+            <i class="far fa-comments"></i>
+            <span class="ml-1 bold">Total Posts: {% total_questions_count %}</span>
+          </span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center no-border">
+          <span>
+            <i class="fas fa-comments"></i>
+            <span class="ml-1 bold">Total Replies: {% total_replies_count %}</span>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+{% endblock %}

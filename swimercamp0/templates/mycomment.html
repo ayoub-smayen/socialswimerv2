@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+
+{% block content%}
+ <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+<script src="{% static 'js/main.js'  %}"></script>
+
+  <div class="container">
+    <div class="comment-box">
+      <div class="comment-form">
+        <div class="header">Add Your Comment</div>
+        <form action="#" onsubmit="postComment()">
+          <div>
+            <input type="hidden" value="{{user.username}}" id="name" />
+          </div>
+          <div>
+            <textarea id="comment" rows="3" cols="30" placeholder="Comment"></textarea>
+          </div>
+          <button type="submit">COMMENT</button>
+        </form>
+      </div>
+      <div>
+        <h4 class="header">Comments</h4>
+        <div id="comments"></div>
+      </div>
+
+
+ <div class="badge" style="color:red;">
+  <p><button class="btn-info" onclick="clickCounter()" type="button">&hearts;</button></p>
+<div id="result"></div>
+<br>
+
+</div>
+
+    </div>
+  </div>
+
+
+<script>
+    function clickCounter() {
+    if(typeof(Storage) !== "undefined") {
+        if (sessionStorage.clickcount) {
+            sessionStorage.clickcount = Number(sessionStorage.clickcount)+1;
+        } else {
+            sessionStorage.clickcount = 1;
+        }
+        document.getElementById("result").innerHTML = "likes " + sessionStorage.clickcount + "";
+    } else {
+        document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+    }
+}
+</script>
+{% endblock%}

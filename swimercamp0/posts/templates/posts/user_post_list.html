@@ -1,0 +1,38 @@
+{% extends "posts/post_base.html" %}
+
+{% block content %}
+<div class="col-md-2">
+	<h3>@{{ post_user.username }}</h3>
+	<p>Your Post History</p>
+</div>
+
+<div class="col-md-10" >
+	{% for post in post_list %}
+	<div class="post media post media list-group-item" style="margin-top: 9px;background-color: bisque;" >
+		<h3 class="title list-group-item-heading" style="color: black !important; margin-bottom: 10px;font-size: large;"><a href="{% url 'posts:single' username=post.user.username pk=post.pk %}">{{ post.question }}</a></h3>
+		<div class="media-body">
+			<h5 class="media-heading">
+				<span class="username"><a href="{% url 'posts:for_user' username=post.user.username %}">@{{ post.user.username }}</a></span>
+				<time class="time" style="color: black;">{{ post.created_at }}</time>
+				{% if post.group %}
+				<span class="group-name" style="color: black;">in <a href="{% url 'groups:single' slug=post.group.slug %}">{{ post.group.name }}</a></span>
+				{% endif %}
+			</h5>
+	
+	
+	
+	
+			<div class="media-footer">
+				{% if user.is_authenticated and post.user == user and not hide_delete %}
+					<a href="{% url 'posts:delete' pk=post.pk %}" title="delete" class="btn btn-simple">
+						<span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>
+						<span class="text-danger icon-label">Delete</span>
+					</a>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	
+	{% endfor %}
+</div>
+{% endblock %}

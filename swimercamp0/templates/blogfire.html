@@ -1,0 +1,513 @@
+<html>
+    <head>
+        <title>Blogs</title>
+        {% load static %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+ <link rel="icon" href="{ % static  ''tn-logo.PNG%}"/>
+
+        <!--[if IE]>
+                 <meta http-equiv="Content-Type" content="text/html; charset=Unicode">
+                 <link rel="stylesheet" type="text/css" href='/css/ie-only.css' />
+                 <script src="/js/ie-only.js"></script>
+
+                 <script>
+                 $(document).ready(function(){
+                   alert("jquery work");
+                    $("video").removeAttr("autoplay");
+                 })
+                 <script>
+           <![endif]-->
+
+   <style>
+   html {
+  font-family: "roboto", helvetica;
+ /* position: relative;
+  height: 100%;*/
+  font-size: 100%;
+  line-height: 1.5;
+  color: #444;
+}
+
+h2 {
+  margin: 1.75em 0 0;
+  font-size: 2vw;
+  margin-bottom:15px;
+}
+
+h3 { font-size: 1.3em; }
+
+.v-center {
+  height: 100vh;
+  width: 100%;
+  display: table;
+  position: relative;
+  text-align: center;
+}
+
+.v-center > div {
+  display: table-cell;
+  vertical-align: middle;
+  position: relative;
+  top: -10%;
+}
+
+.btn {
+  font-size: 3vmin;
+  padding: 0.75em 1.5em;
+  background-color: #fff;
+  border: 1px solid #bbb;
+  color: #333;
+  text-decoration: none;
+  display: inline;
+  border-radius: 4px;
+  -webkit-transition: background-color 1s ease;
+  -moz-transition: background-color 1s ease;
+  transition: background-color 1s ease;
+}
+
+.btn:hover {
+  background-color: #ddd;
+  -webkit-transition: background-color 1s ease;
+  -moz-transition: background-color 1s ease;
+  transition: background-color 1s ease;
+}
+
+.btn-small {
+  padding: .75em 1em;
+  font-size: 0.8em;
+}
+
+.modal-box {
+  display: none;
+  position: absolute;
+  z-index: 1000;
+  width: 98%;
+  background: white;
+  border-bottom: 1px solid #aaa;
+  border-radius: 4px;
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-clip: padding-box;
+}
+@media (min-width: 32em) {
+
+.modal-box { width: 70%; }
+}
+
+.modal-box header,
+.modal-box .modal-header {
+  padding: 1.25em 1.5em;
+  border-bottom: 1px solid #ddd;
+}
+
+.modal-box header h3,
+.modal-box header h4,
+.modal-box .modal-header h3,
+.modal-box .modal-header h4 { margin: 0; }
+
+.modal-box .modal-body { padding: 2em 1.5em; }
+
+.modal-box footer,
+.modal-box .modal-footer {
+  padding: 1em;
+  border-top: 1px solid #ddd;
+  background: rgba(0, 0, 0, 0.02);
+  text-align: right;
+}
+
+.modal-overlay {
+  opacity: 0;
+  filter: alpha(opacity=0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 900;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3) !important;
+}
+
+a.close {
+  line-height: 1;
+  font-size: 1.5em;
+  position: absolute;
+  top: 5%;
+  right: 2%;
+  text-decoration: none;
+  color: #bbb;
+}
+
+a.close:hover {
+  color: #222;
+  -webkit-transition: color 1s ease;
+  -moz-transition: color 1s ease;
+  transition: color 1s ease;
+}
+
+/*html {
+  padding: 20px 0;
+  background-image: linear-gradient(0deg,#cc6aa5,#3e91cc,#2dcca7,#3e91cc,#cc6aa5);
+  background-size: 100% 600%;
+  animation: bg-pan-top 20s ease 0s infinite normal both;
+  animation-play-state: initial;
+}
+
+body {
+  width: 40%;
+  padding: 40px;
+  margin: 0 auto;
+  background: #fff;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+*/
+#video {
+  width: 100%;
+  height: auto;
+  margin: auto;
+}
+
+video {
+  width: 100.2%;
+  height: auto;
+  cursor: pointer;
+}
+
+/*Spinner load*/
+.poster {
+  width: 38px;
+  height: 38px;
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  transform: rotateZ(45deg);
+}
+
+.poster .cube {
+	position: relative;
+	transform: rotateZ(45deg);
+}
+
+.poster .cube {
+	float: left;
+	width: 50%;
+	height: 50%;
+	position: relative;
+	transform: scale(1.1);
+}
+
+.poster .cube:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgb(43,160,199);
+	animation: cube 1.08s infinite linear both;
+	transform-origin: 100% 100%;
+}
+
+.poster .c2 {
+	transform: scale(1.1) rotateZ(90deg);
+}
+
+.poster .c3 {
+	transform: scale(1.1) rotateZ(180deg);
+}
+
+.poster .c4 {
+	transform: scale(1.1) rotateZ(270deg);
+}
+
+.poster .c2:before {
+	animation-delay: 0.135s;
+}
+
+.poster .c3:before {
+	animation-delay: 0.27s;
+}
+
+.poster .c4:before {
+	animation-delay: 0.405s;
+}
+
+@keyframes cube {
+	0%, 10% {
+		transform: perspective(70px) rotateX(-180deg);
+		opacity: 0;
+	}
+
+	25%, 75% {
+		transform: perspective(70px) rotateX(0deg);
+		opacity: 1;
+	}
+
+  90%, 100% {
+    transform: perspective(70px) rotateY(180deg);
+    opacity: 0;
+  }
+}
+
+@keyframes bg-pan-top {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 50% 100%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+   </style>
+   <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script>
+   $(document).ready(function(){
+
+      $("video").removeAttr("autoplay");
+   })
+</script>
+   <script>
+   //var video = document.getElementByTagName("video")[0];
+   //var embeded = document.getElementByTagName("embeded")[0];
+   //video.pause();
+   //embeded.pause();
+   </script>
+
+      {% include "meta.html" %}
+    {% include "css.html" %}
+    {% include "head_js.html" %}
+    </head>
+
+{%load static%}
+
+{% block content%}
+
+{% include "includes/header.html" %}
+
+
+ <div class="container mt-2">
+         <div class="card">
+             <div class="card-body">
+                 <form id="post-form">
+                     <center><h3>Make A Blog</h3></center>
+                     <textarea id="post" class="form-control" placeholder="What's on your mind..."></textarea>
+                     <input type="file" class="form-control" id="image" >
+                     <div class="text-center">
+                         <button type="button" class="btn btn-success" onclick="upload()">Upload</button>
+                     </div>
+
+                 </form>
+              </div>
+
+         </div>
+         <div class="row mt-4" id="posts">
+
+         </div>
+
+     </div>
+
+
+<script>
+
+
+
+
+
+
+
+
+// Modal script
+/*(function($) {
+	$(function(){
+
+	var appendthis =  ("<div class='modal-overlay js-modal-close'></div>");
+
+		$('a[data-modal-id]').click(function(e) {
+			e.preventDefault();
+			$("body").append(appendthis);
+			$(".modal-overlay").fadeTo(500, 0.9);
+			//$(".js-modalbox").fadeIn(500);
+			var modalBox = $(this).attr('data-modal-id');
+			$('#'+modalBox).fadeIn($(this).data());
+			// Show a specific class when opened
+			$('#'+modalBox).addClass('opened');
+      if (($('.modal-box.opened').find('video').attr('autoplay') === 'autoplay')) {
+        $('.modal-box.opened').find('video').get(0).play();
+      }
+		});
+
+	$(".js-modal-close, .modal-overlay").click(function() {
+		$(".modal-box, .modal-overlay").fadeOut(500, function() {
+			$(".modal-overlay").remove();
+		});
+		// Remove the specific class
+		$('.modal-box').removeClass('opened');
+		// Stop the video from playing
+		$('.modal-box').find('video').each(function() {
+				$(this).get(0).pause();
+		});
+	});
+
+	$(window).resize(function() {
+		$(".modal-box").css({
+			//top: ($(window).height() - $(".modal-box").outerHeight()) / 2,
+			//left: ($(window).width() - $(".modal-box").outerWidth()) / 2
+
+			top: ($(window).height() - $(".modal-box").outerHeight()) / 2,
+			left: ($(window).width() - $(".modal-box").outerWidth()) / 2
+
+		});
+	});
+
+	$(window).resize();
+
+	});
+})(jQuery);
+
+*/
+
+
+function upload(){
+    //get your image
+    var image=document.getElementById('image').files[0];
+    //get your blog text
+    var post=document.getElementById('post').value;
+    //get image name
+    var imageName=image.name;
+    //firebase storage reference
+    //it is the path where your image will be stored
+    var storageRef=firebase.storage().ref('images/'+imageName);
+    //upload image to selected storage reference
+    //make sure you pass image here
+    var uploadTask=storageRef.put(image);
+    //to get the state of image uploading....
+    uploadTask.on('state_changed',function(snapshot){
+         //get task progress by following code
+         var progress=(snapshot.bytesTransferred/snapshot.totalBytes)*100;
+         console.log("upload is "+progress+" done");
+    },function(error){
+      //handle error here
+      console.log(error.message);
+    },function(){
+        //handle successfull upload here..
+        uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL){
+           //get your image download url here and upload it to databse
+           //our path where data is stored ...push is used so that every post have unique id
+           firebase.database().ref('blogs/').push().set({
+                 text:post,
+                 imageURL:downloadURL
+           },function(error){
+               if(error){
+                   alert("Error while uploading");
+               }else{
+                   alert("Successfully uploaded");
+                   //now reset your form
+                   document.getElementById('post-form').reset();
+                   getdata();
+               }
+           });
+        });
+    });
+
+}
+
+window.onload=function(){
+    this.getdata();
+}
+
+
+function getdata(){
+    firebase.database().ref('blogs/').once('value').then(function(snapshot){
+      //get your posts div
+      var posts_div=document.getElementById('posts');
+      //remove all remaining data in that div
+      posts.innerHTML="";
+      //get data from firebase
+      var data=snapshot.val();
+      console.log(data);
+
+
+      //now pass this data to our posts div
+      //we have to pass our data to for loop to get one by one
+      //we are passing the key of that post to delete it from database
+      for(let[key,value] of Object.entries(data)){
+
+
+
+   console.log(value.imageURL.split(".").pop());
+
+
+
+        var  stringName = "<div> <p> ayubo </p>  </div>"
+        posts_div.innerHTML="<div class='col-sm-4 mt-2 mb-1'>"+
+        "<div class='card'>"+
+
+        "<object  style='height:250px;'  autoplay='false' autostart='0'>"+
+
+
+    "<param name='autoplay' value='false'><param name='ShowControls' value='true'>"+
+
+    '<embed src="'+value.imageURL+'" width="100%" height="144" autoplay="false" controller="false" style="height:250px;"></embed>'+
+
+
+        "</object>"+
+        "<div class='card-body'><p class='card-text'>"+value.text+"</p>"+
+        "<button class='btn btn-danger' id='"+key+"' onclick='delete_post(this.id)'>Delete</button>"+
+        "</div></div></div>"+posts_div.innerHTML;
+      }
+
+    });
+}
+
+function delete_post(key){
+    firebase.database().ref('blogs/'+key).remove();
+    getdata();
+
+}
+
+</script>
+
+
+
+
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first...make sure you remove -app from below line -->
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+   /* apiKey: "AIzaSyBKQqdNlXRtkcy5NtMyNAc3HNZbVUAurjo",
+    authDomain: "bookevent-c85bd.firebaseapp.com",
+    databaseURL: "https://bookevent-c85bd-default-rtdb.firebaseio.com",
+    projectId: "bookevent-c85bd",
+    storageBucket: "bookevent-c85bd.appspot.com",
+    messagingSenderId: "631788610756",
+    appId: "1:631788610756:web:b91b11cc776d51b5061591",
+    measurementId: "G-6RX71FBKRQ"*/
+
+      apiKey: "AIzaSyDfQal5qQ3zS3DA21oeTrRAonislCWuX68",
+    authDomain: "blogs-233c7.firebaseapp.com",
+    databaseURL: "https://blogs-233c7.firebaseio.com",
+    projectId: "blogs-233c7",
+    storageBucket: "blogs-233c7.appspot.com",
+    messagingSenderId: "960693622725",
+    appId: "1:960693622725:web:325e29579c6c3dc4d91dac",
+    measurementId: "G-3MPBFX087D"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+{% endblock%}

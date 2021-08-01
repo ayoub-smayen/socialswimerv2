@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+
+{% endblock %}
+{% block content %}
+<div class="jumbotron">
+<h1>All Posts</h1>
+
+{% for post, liked, like_no in master %}
+<div class="container"  style="background:purple;text-align:center">
+	<a href="{% url 'detail-post' pk=post.pk %}"><h3>{{ post.title|title }}</h3></a>
+	<p>Created : {{ post.created }}</p>
+	<p>Updated : {{ post.updated }}</p>
+	<p>By : <a href="{% url 'profile1' username=post.user.username %}">{{ post.user }}
+	 <img  avatar="{{post.user}}" class="round" height="30" width="30" />
+	</a></p>
+	{% if post.img %}
+		<img src="{{post.img.url}}">
+	{% endif %}
+	<p class="description">{{ post.description|truncatewords:20 }}</p>
+	{% if liked %}
+	<form method="POST" action="{% url 'like' pk=post.pk destination='detail' %}">
+	{% csrf_token %}
+	<button type="submit" name="next" value="{{ request.path }}"><span class="count">{{like_no}}</span><i class="fa fa-thumbs-up post-icon"></button></i>
+	</form>
+	<!-- </a> -->
+{% else %}
+	<form method="POST" action="{% url 'like' pk=post.pk destination='detail' %}">
+	{% csrf_token %}
+	<button type="submit" name="next" value="{{ request.path }}"><span class="count">{{like_no}}</span><i class="fa fa-thumbs-up post-icon"></button></i>
+	</form>
+{% endif %}
+<a href="{% url 'add-comment' pk=post.pk %}">
+	<button><span class="count">{{post.num_comments}}</span><i class="fa fa-comments post-icon"></i></button>
+</a>
+
+	<br>
+</div>
+
+{% endfor %}
+</div>
+{% endblock %}

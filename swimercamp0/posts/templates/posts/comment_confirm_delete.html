@@ -1,0 +1,27 @@
+{% extends "posts/post_base.html" %}
+
+
+{% block content %}
+<h3>Are you sure you want to delete this comment?</h3>
+
+<div class="posts">
+	<div class="post media list-group-item">
+		<h3 class="title list-group-item-heading" style="color: black !important; margin-bottom: 10px;font-size: medium;">{{ comment.comment }}</h3>
+		<div class="media-body">
+			<h5 class="media-heading">
+				<span class="username" style="color: black !important; margin-bottom: 10px;"><a href="{% url 'posts:for_user' username=comment.post.user.username %}">@{{ comment.user.username }}</a></span>
+				<time class="time" style="color: black !important; margin-bottom: 10px;">{{ comment.created_at }}</time>
+			</h5>
+
+		</div>
+	</div>
+	
+</div>
+
+<form method="POST">
+	{% csrf_token %}
+	<input type="submit" value="Confirm Delete" class="btn btn-danger btn-large" style="margin-top: 4px;">
+	<a href="{% url 'posts:single' username=comment.post.user.username pk=comment.post.pk %}" class="btn btn-simple btn-large btn-default" style="margin-top: 4px;">Cancel</a>
+</form>
+
+{% endblock %}

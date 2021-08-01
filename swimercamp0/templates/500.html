@@ -1,0 +1,16 @@
+{% extends "base.html" %}{% load staticfiles %}
+{% block title %}<title>Error 500 | Elmer</title>{% endblock %}
+
+{% block content %}
+{% include "includes/page_heading.html" with text="Error 500" %}
+<div class="card">
+  <div class="card-body text-center">
+    <h1 class="card-title">500. Unexpected Server Error</h1>
+    <h6>Ooops! Something went wrong. Why not try refreshing you page? Or <a href="#">contact our support</a></h6>
+    <a href="javascript:void(0);" onclick="window.location.back()">back</a>
+    <br><img src="{% static 'img/500.gif' %}">
+
+    {% include "demotn.html"%}
+  </div>
+</div>
+{% endblock %}

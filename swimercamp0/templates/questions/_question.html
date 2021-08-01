@@ -1,0 +1,37 @@
+<div class="card mb-4 no-border" style="background:purple">
+  <div class="card-body">
+    <h5>
+      <i class="far fa-comments"></i>
+      <strong>
+        <a href="{{ question.get_absolute_url }}">
+          {{ question.title }}
+        </a>
+      </strong>
+      <span class="badge badge-light float-right p-2">
+        {{ question.replies.count }}
+      </span>
+    </h5>
+    <p class="question-desc-text">
+      <i class="fas fa-hashtag"></i>
+      <a href="{{ question.category.get_absolute_url }}" class="text-danger bold upper">
+        {{ question.category }}
+      </a>
+      <i class="fas fa-user ml-2"></i>
+      <a href="{% url 'profile1' question.owner.username %}" class="text-warning bold upper">
+        {{ question.owner }}
+
+        <img src=" {{question.owner.profile.get_picture}}" height="40" width="40" class="round"/>
+
+      </a>
+      on {{ question.created_at|date:"M d, Y" }}
+    </p>
+    <div class="">
+        {% with content=question.content|striptags %}
+        {{content|slice:"140"|safe}} ...
+        {% endwith %}
+        {% if question.solved %}
+          <span class="upper bold text-danger d-inline">Solved</span>
+        {% endif %}
+    </div>
+  </div>
+</div>

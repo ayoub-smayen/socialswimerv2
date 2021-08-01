@@ -1,0 +1,887 @@
+{% load static %}
+<style>
+
+/*
+:root {
+  --bg: #fcfcfc;
+  --bg-panel: #ebebeb;
+  --color-headings: #9055dd;
+  --color-text: #333333;
+}
+
+:root[data-theme="dark"] {
+  --bg: #333333;
+  --bg-panel: #434343;
+  --color-headings: #9e58f9;
+  --color-text: #b5b5b5;
+}
+
+html {
+  height: 100%;
+  font-family: "Montserrat";
+
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
+html,
+html *,
+html *::before,
+html *::after {
+  box-sizing: border-box;
+  transition: all 0.2s linear;
+}
+
+body {
+  background-color: var(--bg);
+}
+
+.container {
+  background-color: var(--bg-panel);
+
+  margin: 1.5em;
+  padding: 3em;
+
+  border-radius: 5px;
+
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "title switch"
+    "content content";
+}
+
+@media only screen and (min-width: 1024px) {
+  .container {
+    margin: 5em;
+    padding: 5em;
+    grid-template-columns: 80% auto;
+  }
+}
+
+h1 {
+  margin: 0;
+  color: var(--color-headings);
+}
+
+p {
+  color: var(--color-text);
+  grid-area: content;
+  font-size: 1.1em;
+  line-height: 1.8em;
+  margin-top: 2em;
+}
+*/
+input[type="checkbox"] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+/*label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 52px;
+  height: 27px;
+  background: grey;
+  float: right;
+  border-radius: 100px;
+  position: relative;
+}
+
+label::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 20%;
+  transition: 0.3s;
+}
+
+input:checked + label {
+  background-color: var(--color-headings);
+}
+
+input:checked + label::after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
+}
+
+label:active:after {
+  width: 45px;
+}
+*/
+ .round { border-radius: 50%; }
+</style>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://cdn.rawgit.com/edzapratama/cobaan/2e8ed5f4/inisial.js"></script>
+<script>
+// Toggle grid padding
+function myFunction() {
+  var x = document.getElementById("myGrid");
+  if (x.className === "w3-row") {
+    x.className = "w3-row-padding";
+  } else {
+    x.className = x.className.replace("w3-row-padding", "w3-row");
+  }
+}
+
+// Open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.width = "350px";
+  document.getElementById("mySidebar").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+</script>
+
+
+  <style>
+
+    /* Light Mode Button Styles
+    --------------------------- */
+
+
+
+    .light-mode-button {
+        background:0;
+        border: 0;
+        box-sizing: border-box;
+        cursor: pointer;
+        height: 40px;
+        width: 100px;
+        position: relative;
+        border: 1px solid rgba(255,255,255,0);
+    }
+
+    .light-mode-button:focus {
+        outline:none; /* Not ideal for accessibility */
+    }
+
+    .light-mode-button span:nth-child(1) {
+        position: absolute;
+        top:0;
+        left:0;
+        width: 100px;
+        height:40px;
+        border-radius: 20px;
+        background-color: #d6d7db;
+        box-shadow: inset 1px 1px 3px 0 rgb(0 0 0 / 40%);
+        transition: .3s;
+    }
+
+    .light-mode-button span:nth-child(2) {
+        position: absolute;
+        top:5px;
+        left:5px;
+        width: 30px;
+        height: 30px;
+        background-color: #fff;
+        border-radius: 50%;
+        box-shadow: 1px 1px 2px 0 rgb(0 0 0 / 40%);
+        transition: .3s;
+    }
+
+    body {
+        background-image:url("https://i.pinimg.com/originals/1e/00/3b/1e003b3e24a568645bf876aaff30e42a.gif");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+    background-color: #f6f6f6;
+    transition: background-color .3s;
+}
+
+body[light-mode=dark] {
+    background-color: #141516;
+    color: #ced4e2;
+}
+
+body[light-mode="dark"] .light-mode-button span:nth-child(1){
+    background-color: #ced4e2;
+    color: #141516;
+}
+
+body[light-mode=dark] .light-mode-button span:nth-child(2) {
+    left: 65px;
+    background-color: #141516;
+}
+
+body[light-mode=dark] .light-mode-button img  span:nth-child(2) {
+    left: 65px;
+    background-color: #141516;
+    text-shadow: 1px 2px 3px grey;
+}
+
+body[light-mode=dark] p .light-mode-button img  span:nth-child(2) {
+    left: 65px;
+    background-color: #141516;
+    text-shadow: 1px 2px 3px grey;
+
+    box-shadow:2px 3px 4px gold;
+}
+
+body[light-mode=dark] .light-mode-button div  img  span:nth-child(2) {
+    left: 65px;
+    background-color: blue;
+    text-shadow: 1px 2px 3px grey;
+
+    border-radius:20%;
+
+
+}
+
+
+body[light-mode=dark] .light-mode-button img div  span:nth-child(2) {
+    left: 65px;
+    background-color: blue;
+    text-shadow: 1px 2px 3px grey;
+
+
+
+}
+
+img {
+
+    box-shadow:1px 2px 3px gold;
+}
+
+body{
+    background-color:white;
+    color:black;
+    padding:25px;
+    transition:2s ease-out;
+}
+.dark-mode {
+    background-color:black;
+    color:white;
+    transition:2s ease-in;
+}
+button{
+    color:yellow;
+    border-radius:25px;
+    background-color:purple;
+}
+</style>
+<!-- !PAGE CONTENT! -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+
+    <link rel='stylesheet' href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'>
+
+
+<script>
+    var app = document.getElementsByTagName("BODY")[0];
+    if (localStorage.lightMode == "dark") {
+        app.setAttribute("light-mode", "dark");
+    }
+</script>
+
+    <script type="text/javascript" src="https://cookieconsent.popupsmart.com/src/js/popper.js"></script>
+    <script> window.start.init({Palette:"palette6",Mode:"floating left",Theme:"edgeless",Time:"5",})</script>
+  <script>
+    function toggle_light_mode() {
+        var app = document.getElementsByTagName("BODY")[0];
+        if (localStorage.lightMode == "dark") {
+      localStorage.lightMode = "light";
+      app.setAttribute("light-mode", "light");
+        } else {
+      localStorage.lightMode = "dark";
+      app.setAttribute("light-mode", "dark");
+        }
+    }
+/*
+
+(function() {
+
+  // Definition of caller element
+  var getTriggerElement = function(el) {
+    var isCollapse = el.getAttribute('data-collapse');
+    if (isCollapse !== null) {
+      return el;
+    } else {
+      var isParentCollapse = el.parentNode.getAttribute('data-collapse');
+      return (isParentCollapse !== null) ? el.parentNode : undefined;
+    }
+  };
+
+  // A handler for click on toggle button
+  var collapseClickHandler = function(event) {
+    var triggerEl = getTriggerElement(event.target);
+    // If trigger element does not exist
+    if (triggerEl === undefined) {
+      event.preventDefault();
+      return false;
+    }
+
+    // If the target element exists
+    var targetEl = document.querySelector(triggerEl.getAttribute('data-target'));
+    if (targetEl) {
+      triggerEl.classList.toggle('-active');
+      targetEl.classList.toggle('-on');
+    }
+  };
+
+  // Delegated event
+  document.addEventListener('click', collapseClickHandler, false);
+
+})(document, window);
+
+// ===== Scroll to Top ====
+$(window).scroll(function() {
+  if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
+      $('#return-to-top').fadeIn(200);    // Fade in the arrow
+  } else {
+      $('#return-to-top').fadeOut(200);   // Else fade out the arrow
+  }
+});
+$('#return-to-top').click(function() {      // When arrow is clicked
+  $('body,html').animate({
+      scrollTop : 0                       // Scroll to top of body
+  }, 500);
+});
+
+window.addEventListener("storage", function () {
+  if (localStorage.lightMode == "dark") {
+      app.setAttribute("light-mode", "dark");
+} else {
+    app.setAttribute("light-mode", "light");
+}
+}, false);
+*/
+
+ function darkMode2(){
+    var element=document.body;
+    element.classList.toggle("dark-mode");
+}
+ </script>
+<div class="modal modal-fullscreen-xl" id="modal-fullscreen-xl" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">dark mode </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+       <nav role="navigation" id="navigation" class="list">
+
+            <a href="http://elmeriyu.pythonanywhere.com/" target="_blank" class="item -link">swimer version .V1</a>
+{% if request.user.is_authenticated %}
+
+              <li><a href="{% url 'groups:all' %}" class="btn btn-simple" style="margin-top: 7px; font-size:20px;">Spaces</a></li>
+                  <li><a href="{% url 'groups:create' %}" class="btn btn-simple" style="margin-top: 7px; font-size:20px;">Create Space</a></li>
+                  <li><a href="{% url 'posts:for_user' username=user.username %}" class="btn btn-simple"  style="margin-top: 7px; font-size:20px;">Your Posts</a><li>
+          <a class="nav-link bold" href="{% url 'new_question' %}">Ask a Question</a>
+          <div>
+			<a href="{% url 'add-post' %}">New Post</a>
+			<a href="{% url 'display-posts' %}">Posts</a>
+		</div>
+{% endif%}
+
+            <a href="https://chatymartini.pythonanywhere.com/home/" target="_blank" class="item -link">
+                <i class="fa fa-send">
+
+                </i>
+            </a>
+
+
+      <a href="https://gameflappyball.netlify.app/"  class="btn" target="_blank">
+          <i class="fa fa-group"></i>
+      </a>
+
+              <a href="{%  url 'blogfire'%}" class="fa fa-group" class="item -link">myblog</a>
+
+            <a href="http://bootcampyub.pythonanywhere.com/"  class="item-link">tnsocialcamp</a>
+            <a href="http://yungayoub.pythonanywhere.com/" target="_balnk" class="item -link">Q&A</a>
+            <a href="https://ageneral.pythonanywhere.com/" target="_blank" class="item -link">Auction</a>
+            <a href="https://ayoub871.pythonanywhere.com/restaurant/" target="_blank" class="item -link">receipe-social</a>
+             <a href="https://tweetayoub.pythonanywhere.com/" target="_blank" class="item -link">blogerCamp</a>
+             <a href="http://wael1323.pythonanywhere.com/" target="_blank" class="item -link">webaybook</a>
+              <a class="dropdown-item" href="https://caleventusr.netlify.app/" target="_blank">
+
+                <i class="fa fa-calendar">
+
+                </i>
+            </a>
+
+
+            <a class="dropdown-item" href="https://ayoub871.pythonanywhere.com/restaurant" target="_blank">
+
+               <i class="fa fa-cutlery" aria-hidden="true"></i>
+            </a>
+
+             <a class="dropdown-item" href="http://jacoubsmayen.pythonanywhere.com/" target="_blank">
+
+                <i class="fa fa-comments-o" aria-hidden="true"></i>
+            </a>
+
+
+
+          </nav>
+      <div class="modal-body">
+<button
+  class="light-mode-button"
+  aria-label="Toggle Light Mode"
+  onclick="toggle_light_mode()">
+  <span></span>
+  <span></span>
+</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-expand-md navbar-light extra_navbar_styling">
+
+    <div class="jumbotron">
+
+
+        <button class="btn btn-primary btn-lg btn-open-modal" data-toggle="modal" data-target="#modal-fullscreen-xl">
+          <i class="fa fa-cog">
+
+            </i>
+   </button>
+    </div>
+    {% if request.user.is_authenticated %}
+           <img class="round" width="120" height="120" avatar="{{request.user.username}}"  style="background:orange"/>
+
+      {%else%}
+<img class="round" width="120" height="120" avatar="Guest"  style="background:orange"/>
+      {%endif%}
+  <div class="container">
+
+
+
+    <a class="navbar-brand mb-1" href="{% url 'home' %}">
+      <img src="{% static 'img/tn-logo.PNG' %}?lastmod=1" alt="Tn-lmer" height="120px"width="175px">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNavbar" aria-controls="topNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="topNavbar">
+        <!----->
+
+
+<div class="w3-opacity"  style="float:left;">
+<span class="w3-button w3-xxlarge w3-white w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+<div class="w3-clear"></div>
+</div>
+
+
+
+
+      <ul class="navbar-nav mr-auto">
+        <form class="form-inline"
+              action="{% if not bv %}{% url 'search' %}{% else %}{% url 'board_search' board.slug %}{% endif %}"
+              method="get"
+              autocomplete="off">
+          <div class="form-group">
+            <label for="search" class="sr-only">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </label>
+             <i class="fa fa-search" aria-hidden="true"></i>
+            <input type="text"
+                   class="form-control form-control-md"
+                   id="search"
+                   name="query"
+                   placeholder="{% if not bv %}Search here {% else %}Search b/{{board.slug}}{% endif %}">
+
+          </div>
+
+        </form>
+
+
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'home' %}">
+          <i class="fa fa-home fa-2x" style="font-size:30px;color:purple;">
+
+          </i>
+          </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'trending' %}">
+                <i class="fa fa-newspaper-o" aria-hidden="true" style="font-size:30px;color:purple;"></i>
+            </a>
+        </li>
+
+         <li class="nav-item">
+            <a class="nav-link" href="   https://musicaeverywhere.netlify.app/">
+
+                <i class="fa fa-music" aria-hidden="true" style="font-size:30px;color:purple;"></i>
+            </a>
+        </li>
+
+
+
+        <li class="nav-item">
+            <a href="https://chatymartini.pythonanywhere.com/home/" target="_blank" class="item -link">
+                <i class="fa fa-send" style="font-size:30px;color:purple;">
+
+                </i>
+            </a>
+
+        </li>
+
+         <li class="nav-item">
+
+
+                         <a class="nav-link" href="{% url 'tnelmer3' %}" target="_blank">
+               <i class="fa fa-map-marker " aria-hidden="true" style="font-size:30px;color:red;"></i>
+            </a>
+        </li>
+
+
+         <li class="nav-item">
+            <a class="nav-link" href="http://chatymartini.pythonanywhere.com/home/" target="_blank">
+                <img src="https://png.pngtree.com/png-vector/20190430/ourmid/pngtree-dialog-box-vector-speech-bubbles-message-boxes-collection-for-comments-png-image_1005974.jpg"
+
+                height="30" width="30"
+                >
+
+
+            </a>
+        </li>
+
+
+        <li class="nav-item">
+            <a class="nav-link" href="http://jacoubsmayen.pythonanywhere.com/" target="_blank">
+<i class="fa fa-video-camera" aria-hidden="true" style="font-size:30px;color:purple;"></i>
+</a>
+        </li>
+
+
+        <li class="nav-item">
+          <a class="nav-link"
+             href="{% if request.user.is_authenticated %}#{% else %}{% url 'view_all_boards' %}{% endif %}"
+             id="boards_container_trigger">
+              <i class="fa fa-clipboard fa-3x" aria-hidden="true" style="font-size:30px;color:purple;"></i>
+          </a>
+        </li>
+      </ul>
+
+      {% if request.user.is_authenticated %}
+    <a href="{% url 'inbox' %}" class="mr-3" id="check_messages"><i class="fa fa-inbox fa-lg" aria-hidden="true"></i><span id="messages_count"></span></a>
+
+    <a href="{% url 'activities' %}" class="mr-3" id="check_activities"><i class="fa fa-bell-o fa-lg" aria-hidden="true"></i><span id="activities_count"></span></a>
+    <a href="{% url 'new_subject' %}" class="mr-3"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
+
+        <div class="dropdown">
+          <a href="#" role="button" id="user_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="{{request.user.profile.get_picture}}" style="width: 100px; height: 100px; border-radius: 50px;">
+          </a>
+          <div class="dropdown-menu" aria-labelledby="user_dropdown" style="right: 0; left: auto;">
+
+
+
+        <a class="dropdown-item" href="{% url 'inbox' %}" class="mr-3" id="check_messages">Inbox<span id="messages_count" style="color:red"></span></a>
+        <a class="dropdown-item" href="{% url 'activities' %}" class="mr-3" id="check_activities">activities<span id="activities_count" style="color:red"></span></a>
+        <a class="dropdown-item" href="{% url 'new_subject' %}" class="mr-3">new subject</a>
+
+
+            <a class="dropdown-item" href="{% url 'user_profile' request.user.username %}">Your Profile</a>
+            <a class="dropdown-item" href="{% url 'view_following' %}">Following</a>
+            <a class="dropdown-item" href="{% url 'tnelmer' %}">private-photo</a>
+            <a class="dropdown-item" href="{% url 'user_subscription_list' request.user.username %}">Subscriptions</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{% url 'new_board' %}">Create Board</a>
+            <a class="dropdown-item" href="{% url 'user_created_boards' request.user.username %}">Your Boards</a>
+
+
+            <div class="dropdown-divider"></div>
+
+            <a class="dropdown-item" href="{% url 'profile_edit' %}">Account Settings</a>
+
+
+
+
+
+            <a class="dropdown-item" href="{% url 'tnelmer5' %}" target="_blank">
+
+                 <i class="fa fa-cc-discover" aria-hidden="true"></i>
+            </a>
+
+
+            <a class="dropdown-item" href="http://videotube1.pythonanywhere.com/video/3/1/" target="_blank">
+                <i class="fa fa-plus " style="font-size:30px;color:purple;">
+
+                </i>
+            </a>
+
+            <a class="dropdown-item" href="{% url 'tnelmer2' %}" target="_blank">
+                <i class="fa fa-save" style="font-size:20px;color:purple;">
+
+                </i>
+            </a>
+
+             <a class="dropdown-item" href="{% url 'tnelmer3' %}" target="_blank">
+               <i class="fa fa-map-marker " aria-hidden="true" style="font-size:20px;color:red;"></i>
+            </a>
+
+
+
+
+
+
+
+
+
+
+
+            <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+          </div>
+        </div>
+      {% else %}
+        <a href="{% url 'login' %}" class="btn btn-primary btn-sm mr-2">Login</a>
+        <a href="{% url 'signup' %}" class="btn btn-success btn-sm">Sign Up</a>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+
+
+
+
+<nav class="w3-sidebar w3-orange w3-animate-top w3-xxlarge" style="display:none;padding-top:150px" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-black w3-xxlarge w3-padding w3-display-topright" style="padding:6px 24px">
+    <i class="fa fa-remove"></i>
+  </a>
+  <div class="w3-bar-block w3-center">
+    <a href="{% url 'home' %}" class="w3-bar-item w3-button w3-text-grey w3-hover-black">
+        <i class="fa fa-home" aria-hidden="true"></i>
+    </a>
+
+
+<a href="{% url  'bookevent' %}" class="w3-bar-item w3-button w3-text-grey w3-hover-black">
+       <i class="fa fa-book" aria-hidden="true"></i>
+    </a>
+<a class="w3-bar-item w3-button w3-text-grey w3-hover-black" href="{% url 'forum1'%}"  >forums</a>
+ <a href="{% url 'trending' %}" class="w3-bar-item w3-button w3-text-grey w3-hover-black">trending</a>
+    <a href="{% url 'tnelmer2' %}" class="w3-bar-item w3-button w3-text-grey w3-hover-black" target="_blank">Notes</a>
+
+
+     <a href=" https://ide.cs50.io" class="w3-bar-item w3-button w3-text-grey w3-hover-black" target="_blank">
+       <i class="fa fa-code" aria-hidden="true"></i>
+    </a>
+
+
+    <a href="https://alpha.sandstorm.io/">
+       <i class="fa fa-send" aria-hidden="true"></i>
+    </a>
+
+
+    <a href=" https://shopfood1.pythonanywhere.com/" class="w3-bar-item w3-button w3-text-grey w3-hover-black">
+        foodshop
+    </a>
+
+
+ <a href="http://ayubchatty.pythonanywhere.com/"  class="w3-bar-item w3-button w3-text-grey w3-hover-black" target="_blank">
+        group-chatting
+    </a>
+
+    <a href="https://infinite-tundra-48170.herokuapp.com/" class="w3-bar-item w3-button w3-text-grey w3-hover-black" target="_blank">Chat</a>
+   <a href="https://naughty-nightingale-e33d8b.netlify.app/"   class="w3-bar-item w3-button w3-text-grey w3-hover-black"  target="_blank">
+       weather
+   </a>
+
+
+
+
+
+
+  </div>
+</nav>
+
+
+<script>
+
+$('#main').toggleClass(localStorage.toggled);
+
+function darkLight() {
+    var  toogle1 = false;
+  /*DARK CLASS*/
+  if (localStorage.toggled != 'dark') {
+
+      toogle1 =!toogle1;
+      //$("#dr").toggleClass("fa fa-toggle-on",true);
+      //$("#dr").toggleClass("fa fa-toggle-off",false);
+    $('#main, p').toggleClass('dark', true);
+    localStorage.toggled = "dark";
+
+  } else {
+      //$("#dr").toggleClass("fa fa-toggle-on",false);
+      //$("#dr").toggleClass("fa fa-toggle-off",true);
+    $('#main, p').toggleClass('dark', false);
+    localStorage.toggled = "";
+  }
+}
+if(toggle1){
+ $("#dr").toggleClass("fa fa-toggle-on",true);
+      $("#dr").toggleClass("fa fa-toggle-off",false);
+}
+else {
+     $("#dr").toggleClass("fa fa-toggle-on",false);
+     $("#dr").toggleClass("fa fa-toggle-off",true);
+}
+/*Add 'checked' property to input if background == dark*/
+if ($('main').hasClass('dark')) {
+   $( '#checkBox' ).prop( "checked", true );
+  // $("#dr").toggleClass("fa fa-toggle-off");
+} else {
+  $( '#checkBox' ).prop( "checked", false )
+  //$("#dr").toggleClass("fa fa-toggle-on");
+}
+
+
+</script>
+
+<style>
+    .dark {
+  background: #545454;
+  color: #efefef;
+  text-shadow:1px 2px 3px blue;
+
+}
+p {
+  background: none !important;
+}
+</style>
+
+<div class="toggle">
+
+
+
+
+
+        <input id="switch" type="checkbox" name="theme" />
+
+
+        <label for="switch">
+            <i class="fa fa-toggle-off" onclick="darkLight()" id="dr">
+
+            </i>
+
+
+         <a href="{% url 'cooments'%}">
+              <i class="fa fa-user" style="font-size:30px;">
+
+            </i>
+        </a>
+
+
+
+        </label>
+
+
+   <a href="{% url 'news' %}" class="text text-info" target="_blank">
+
+
+    News
+        </a>
+
+         <a href="{% url 'index' %}" >
+
+
+    Q&A
+        </a>
+
+
+    <a href="https://chatymartini.pythonanywhere.com/" target="_blank">
+
+
+            <img src="https://chatymartini.pythonanywhere.com/static/users/images/gh.jpg" height="40" width="40"/>
+        </a>
+
+         <a href="https://caleventusr.netlify.app/" target="_blank">
+            <i class="fa fa-calendar" style="font-size:30px;">
+
+            </i>
+        </a>
+
+         <a href="https://tweetayoub.pythonanywhere.com/" target="_blank">
+
+
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_XOrfAbLOf7xuz5hxi5XwNI49V5n9IANAZA&usqp=CAU" height="40" width="40"/>
+        </a>
+
+
+         <a href="http://ayubchatty.pythonanywhere.com/" target="_blank" target="_blank">
+        <img src="https://www.vhv.rs/dpng/d/437-4371993_3d-message-icon-png-clipart-png-download-chat.png" height="30" width="30" alt="message-icon"/>
+
+        </a>
+
+
+         <a href="https://chattytn.netlify.app/" target="_blank">
+             <img src="https://img.icons8.com/ios-filled/452/chat-message--v1.png" height="30" width="30" alt="message-icon"/>
+
+        </a>
+
+        <a href="https://naughty-nightingale-e33d8b.netlify.app/" target="_blank">
+            <i class="fa fa-cloud" style="font-size:30px;">
+
+            </i>
+        </a>
+         <a href="https://mysocialchaty.netlify.app/pong.html/"  target="_blank">
+            <i class="fa fa-pong">
+
+            </i>
+            <img src="https://thumbs.dreamstime.com/b/tennis-ball-icon-16492142.jpg" height="30" width="30"/>
+        </a>
+
+      </div>
+<p hidden> here </p>
+<!-- Header
+<div class="w3-opacity">
+<span class="w3-button w3-xxlarge w3-white w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+<div class="w3-clear"></div>
+<header class="w3-center w3-margin-bottom">
+
+
+
+
+  <p class="w3-padding-16"><button class="w3-button w3-black" onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">
+
+
+      <i class="fa fa-smile">
+
+      </i>
+  </button></p>
+</header>
+</div>
+
+
+
+
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content">
+      <div class="w3-container">
+        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+        <p>Some text. Some text. Some text.</p>
+        <p>Some text. Some text. Some text.</p>
+      </div>
+    </div>
+  </div>
+
+-->
+
+
+
+
+
+

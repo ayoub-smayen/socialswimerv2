@@ -1,0 +1,371 @@
+{% load flatpages %}
+{% get_flatpages as flatpages %}
+{% load static %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<div class="text-muted" style="font-size:12px; margin-top:20px; padding:5px;">
+
+  {% for page in flatpages %}
+    <a href="{{ page.url }}">{{ page.title }}</a><span> &middot; </span>
+  {% endfor %}
+
+  <a href="{% url 'django.contrib.sitemaps.views.sitemap' %}" target="_blank">Sitemap</a><span> &middot; </span>
+  <a href="#">Send Feedback</a><br>
+
+  <a href="https://mysocialchaty.netlify.app/bookevent.html" target="_blank" class="badge badge-danger">bookevent</a>
+ <a href="https://mysocialchaty.netlify.app/codeeditor.html" target="_blank" class="badge badge-primary" style="background:pink;">codingEditor</a>
+
+
+  <a href="https://mysocialchaty.netlify.app/freindlychat.html" target="_blank" class="badge badge-info" style="color:grey;">
+      freindlychat
+  </a>
+
+
+  <a href="http://bootcampyub.pythonanywhere.com/" target="_blank" class="badge badge-info" style="background:blue;">
+      socialcamp
+  </a>
+
+  <a href="https://mysocialchaty.netlify.app" target="_blank" class="badge badge-info" style="color:silver;">
+      socialsystem
+  </a>
+  <span>
+      <img src="{% static 'img/tn-logomeryoul.PNG'%}" height="450px" width="350px"  />
+  </span>
+
+
+
+<br/>
+
+<a href="https://bootcampingtn.netlify.app/" target="_blank">
+<img src="https://previews.123rf.com/images/jemastock/jemastock1709/jemastock170917250/86487069-global-chat-icon-.jpg" height="40" width="40"/>
+</a>
+
+<a href="https://mysocialchaty.netlify.app/wordchat.html/" target="_blank">
+<img src="https://cdn.w600.comps.canstockphoto.com/global-chat-logo-template-design-vector-clipart_csp77412100.jpg" height="40" width="40"/>
+</a>
+ <a href="https://caleventusr.netlify.app/">
+            <i class="fa fa-calendar" style="font-size:30px;">
+
+            </i>
+        </a>
+
+
+         <a href="https://chattytn.netlify.app/">
+             <img src="https://img.icons8.com/ios-filled/452/chat-message--v1.png" height="30" width="30" alt="message-icon"/>
+
+        </a>
+
+        <a href="https://naughty-nightingale-e33d8b.netlify.app/">
+            <i class="fa fa-cloud" style="font-size:30px;">
+
+            </i>
+        </a>
+
+
+        <a href="https://mysocialchaty.netlify.app/lg">
+             <img src="https://w7.pngwing.com/pngs/776/980/png-transparent-incandescent-light-bulb-fluorescent-lamp-lighting-light-light-fixture-bathroom-lamp.png" height="35" width="35" alt="lamp-icon"/>
+
+        </a>
+
+
+        {% if request.user.is_authenticated%}
+
+        <a href="javascript:void(0)" onclick="window.localtion.reload();">
+            <img src="" height="35" width="35" avatar="{{request.user.username}}" class="round" alt="lamp-icon"/>
+        </a>
+
+
+        {% else %}
+        <img src="#" height="35" width="35" avatar="guest" class="round" alt="lamp-icon"/>
+        {% endif%}
+
+         <a href="http://ayoubswwemer.pythonanywhere.com/" target="_blank">
+            <i class="fa fa-comment" style="font-size:30px;">
+
+            </i>
+        </a>
+
+
+
+
+         <a href="https://mysocialchaty.netlify.app/pong.html/">
+            <i class="fa fa-pong">
+
+            </i>
+            <img src="https://thumbs.dreamstime.com/b/tennis-ball-icon-16492142.jpg" height="30" width="30"/>
+        </a>
+
+
+<hr style="color: grey"/>
+ <a href="{% url 'foody' %}" target="_blank" style="text-shadow:1px 2px 3px gold">
+  food
+ </a>
+
+ <a href=" https://caleventusr.netlify.app/">
+     <i class="fa fa-calendar" style="font-size:25px;color:red;">
+
+     </i>
+ </a>
+<a href="https://shopfood1.pythonanywhere.com/" target="_blank">
+<i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:35px;color:purple;"></i>
+</a>
+ <a href="https://pycaret-insurance.herokuapp.com/" target="_blank">
+  Ml-Tn
+ </a>
+
+<a  href="{% url 'tnelmer4' %}" target="_blank">
+                <i class="fa fa-gamepad" style="font-size:20px;color:purple;">
+
+                </i>
+            </a>
+
+ <a  href="{% url 'tnelmer5' %}" target="_blank">
+                <i class="fa fa-eye" style="font-size:12px;color:green;">
+
+                </i>
+
+            </a>
+
+
+ <a href="http://murmuring-sands-99658.herokuapp.com/" target="_blank" style="text-shadow:1px 2px 3px gold">
+  my-recipe
+ </a>
+
+
+  <a href="http://azeryrecipes.pythonanywhere.com/" target="_blank">
+      3aber
+  </a>
+<a href="https://mysocietywebsite.netlify.app/" target="_blank" class="btn btn-primary">
+   generalactiviy
+</a>
+
+
+
+
+ <a href="https://ayoubjobs2019.wixsite.com/monsite" class="btn btn-danger" target="_blank">
+     forum
+ </a>
+
+
+  <a href="https://shoppiyu.pythonanywhere.com/" target="_blank">
+      our games
+  </a>
+<a href="http://chatymartini.pythonanywhere.com/home/" target="_blank">
+ <img src="https://e7.pngegg.com/pngimages/330/499/png-clipart-message-telephone-email-computer-icons-email-miscellaneous-leaf.png" height="40" width="40"/>
+</a>
+
+
+
+
+
+
+
+
+
+  <a href="https://app.cosmicjs.com/add-bucket?show_tour=true&signup=google" target="_blank">
+      create your app here
+  </a>
+
+  <a href="http://suchii.pythonanywhere.com/" target="_blank">
+      <i class="fa fa-piano"></i>piano<i class="fa fa-keyboard-o" aria-hidden="true" style="color:gold;"></i>
+  </a>
+  <a href="http://videotube1.pythonanywhere.com/" target="_blank">
+      videoTub-Tn
+  </a>
+
+  <a  href="https://appchat258.pythonanywhere.com/" target="_blank">
+      my-musicTn
+  </a>
+
+  <a href="https://15b45be0-f24b-11e7-8739-bd1a2fa1284e.cosmicapp.co/"target="_blank">
+      blog
+  </a>
+
+
+<button onclick="typeWriter()" class="btn btn-primary">
+    <i class="fa fa-heart">
+
+    </i>
+</button>
+<div id="result">0</div>
+<p id="demo"></p>
+
+
+
+
+
+  <div class="row text-center">
+      <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/177671751&color=%2312ed28&auto_play=true&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false" frameborder="0" height="50"></iframe>
+
+    <h3>RANDOM SONG </h3><br>
+  </div>
+  <div class="row text-center">
+    <div class="col-xs-6 text-right" id="songImage"></div>
+    <div class="col-xs-6 text-left">
+      <p id="song"></p>
+      <p id="artist"></p>
+      <p id="releaseDate"></p>
+      <button class="button" onclick="newRandomSong()" class="btn btn-primary" style="color:red"><span>NEW SONG</span></button>
+      <br>
+
+
+
+    </div>
+  </div>
+
+  <br/>
+
+
+
+    <iframe src="https://localcast-weather-duluca.vercel.app/" class="responsive" height="500px" width="100%">
+
+    </iframe>
+<a href="https://mysocialchaty.netlify.app/"   class="text text-success"  target="_blank">
+       <i class="fa fa-file-video-o" aria-hidden="true" style="font-size:48px"></i>
+   </a>
+
+
+
+  <a href="https://caleventusr.netlify.app/" target="_blank" class="text text-success">
+     <i class="fa fa-clock-o" aria-hidden="true" style="font-size:48px"></i>
+  </a>
+
+
+   <a href="http://yungayoub.pythonanywhere.com" target="_blank" class="text text-success">
+     <i class="fa fa-graduation-cap" aria-hidden="true" style="font-size:48px"></i>
+  </a>
+  <a href="https://ageneral.pythonanywhere.com/" target="_blank" class="text text-success">
+       <i class="fa fa-gavel" aria-hidden="true" style="font-size:48px"></i>
+  </a>
+
+
+
+     <a href="http://yungayoub.pythonanywhere.com/" class="btn btn-success">learning site
+      <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+     </a>
+
+    <iframe src="https://ayoubjobs2019.wixsite.com/rabbitvoy" height="500" width="100%">
+
+    </iframe>
+    <a href="https://ayoubjobs2019.wixsite.com/rabbitvoy" class="btn btn-info">visit</a>
+<br/>
+<span class="badge">
+    <a href="https://bloggerappfin.netlify.app/" target="_blank">blogger</a>
+    <div class="col">
+
+   <small>
+      about developer
+      <a href="https://eloquent-shockley-93e5b7.netlify.app/" target="_blank">developer</a>
+   </small>
+    </div>
+</span>
+
+</div>
+<script>
+var i = 0;
+var txt = 'hello socialTnCamp this site about blog and general activaity ,  chat  add post  comment like  blog shopping   ';
+var speed = 50;
+
+function typeWriter() {
+    if (typeof(Storage) !== "undefined") {
+    if (sessionStorage.clickcount) {
+      sessionStorage.clickcount = Number(sessionStorage.clickcount)+1;
+    } else {
+      sessionStorage.clickcount = 1;
+    }
+    document.getElementById("result").innerHTML = " likes " +  sessionStorage.clickcount;
+  } else {
+    document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+  }
+
+
+  if (i < txt.length) {
+    document.getElementById("demo").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+</script>
+
+<script>
+    var CLIENTID = "Eq8KSecb2Yz4Lq--EUjuGWH_8OifHCRwdwHr1ztKdLx5Qk_zCZG--AXPSQzMXhL-";
+var CLIENTSECRET = "-3Ynmxt9BZab3Qs5sbr_GdzGxXoGqSqbSISFuEQwquYeVm-5-A3nFIcgUOvDSY731GT-hhJtvTK5jYDccT7juQ";
+var accessToken= "?access_token=CXyFeSBw2lAdG41xkuU3LS6a_nwyxwwCz2dCkUohw-rw0C49x2HqP__6_4is5RPx";
+var API = "https://api.genius.com/search";
+var APISong = "https://api.genius.com/songs/";
+var songID = "2471960";
+var maxSong= 2471960;
+//Max song is 489579 for a fairly safe number. But 2 million songs
+
+/**
+ * Returns a random integer between min (inclusive) and max (inclusive)
+ */
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+//https://api.genius.com/search?q=Kendrick%20Lamar
+var xhr = new XMLHttpRequest(); //XML HTTP Request
+xhr.onreadystatechange = function() {
+  if (xhr.readyState === 4) {
+    if (xhr.status === 200 || xhr.status === 304) {
+      // Success! Do stuff with data.
+      //console.log(xhr.responseText);
+    }
+  }
+};
+xhr.open("GET", APISong+songID+accessToken, false);
+//xhr.open("GET", API+accessToken+ '&q=Kendrick%20Lamar', false);
+
+xhr.send();
+//console.log(xhr.status);
+//console.log(xhr.statusText);
+demo=xhr.response;
+
+var json = JSON.parse(demo);
+var song = json['response']['song'];
+
+
+function newRandomSong() {
+  songID =getRandomInt(1,maxSong);
+  randomSong();
+}
+
+function randomSong(){
+  xhr.open("GET", APISong+songID+accessToken, false);
+  xhr.send();
+  demo=xhr.response;
+
+  while (xhr.status===404){ //Checks if the Random Song Exists
+      songID =getRandomInt(1,maxSong);
+      xhr.open("GET", APISong+songID+accessToken, false);
+      xhr.send();
+      demo=xhr.response;
+  }
+
+  json = JSON.parse(demo);
+  song = json['response']['song'];
+  document.getElementById("songImage").innerHTML = "<img src=\""+song['song_art_image_url']+"\"alt=\"Some Awesome Album Art\" style=\"width:200px;height:200px;\">";
+  // I made these pixel values since I'd rather have overlap on a small screen than the image scaled too small
+
+
+//document.getElementById("song").innerHTML = "SONG: <a href="+song['url']+" >"+song['title'].toUpperCase()+"</a>";
+document.getElementById("song").innerHTML = "SONG: <a target=\"_blank\" href="+song['url']+" >"+song['title'].toUpperCase()+"</a>";
+
+document.getElementById("artist").innerHTML = "ARTIST: <a target=\"_blank\"  href="+song['primary_artist']['url']+">"+song['primary_artist']['name'].toUpperCase()+"</a>";
+document.getElementById("releaseDate").innerHTML = "RELEASE DATE: "+song['release_date'];
+}
+function tweetSong(){
+  window.open('https://twitter.com/intent/tweet?hashtags=songs&text=Found a cool song today. "'+song['title']+'" by '+song['primary_artist']['name']);
+
+}
+
+//GETTING STARTED //
+$(document).ready(function() {
+  randomSong(); //Using this instead of newRandomSong, because I want to start with the same song every time
+});
+
+
+
+</script>
+

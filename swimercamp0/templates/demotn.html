@@ -1,0 +1,86 @@
+
+{% load static  %}
+{% block title %}<title>
+    statistics
+</title>{% endblock %}
+
+
+{% block content %}
+<style>
+    #map-canvas{
+  height: 500px;
+  width: 500px;
+  border: 3px solid black;
+}
+</style>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-metro.css">
+<div class="w3-container w3-metro-dark-red">
+<h2>info </h2>
+<p>
+</p>
+</div>
+<script type="text/vbscript">
+document.write("This is good !")
+</script>
+<div id="map-canvas"></div>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" type="text/javascript"></script>
+<a href="/">back home</a>
+<div id="piechart"></div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+// Load google charts
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+// Draw the chart and set the chart values
+function drawChart() {
+  var data = google.visualization.arrayToDataTable([
+  ['Task', 'Hours per Day'],
+  ['Work', 8],
+  ['Eat', 2],
+  ['TV', 4],
+  ['Gym', 2],
+  ['Sleep', 8]
+]);
+
+  // Optional; add a title and set the width and height of the chart
+  var options = {'title':'My Average Day', 'width':550, 'height':400};
+
+  // Display the chart inside the <div> element with id="piechart"
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  chart.draw(data, options);
+}
+
+
+// if HTML DOM Element that contains the map is found...
+if (document.getElementById('map-canvas')){
+
+    // Coordinates to center the map
+    var myLatlng = new google.maps.LatLng(52.525595,13.393085);
+
+    // Other options for the map, pretty much selfexplanatory
+    var mapOptions = {
+        zoom: 14,
+        center: myLatlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    // Attach a map to the DOM Element, with the defined settings
+    var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+    map.data.setControls(["Polygon"])
+
+}
+</script>
+
+
+
+
+
+
+
+
+{%endblock%}
